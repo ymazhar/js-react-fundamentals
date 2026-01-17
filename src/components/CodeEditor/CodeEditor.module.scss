@@ -37,36 +37,4 @@
   }
 }
 
-.codeArea {
-  margin: 0;
-  padding: $spacing-lg;
-  font-family: $font-family-mono;
-  font-size: $font-size-base;
-  line-height: 1.6;
-  color: $color-text-primary;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-
-  // Syntax highlighting classes
-  :global(.keyword) {
-    color: #c792ea;
-  }
-
-  :global(.string) {
-    color: #c3e88d;
-  }
-
-  :global(.function) {
-    color: #82aaff;
-  }
-
-  :global(.comment) {
-    color: #546e7a;
-  }
-
-  :global(.number) {
-    color: #f78c6c;
-  }
-}
 

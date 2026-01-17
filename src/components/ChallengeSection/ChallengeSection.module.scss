@@ -1,0 +1,405 @@
+/**
+ * ChallengeSection Component Styles
+ * Scoped SCSS module for the ChallengeSection component
+ */
+
+@use '../../styles/variables' as *;
+
+// Main section container
+.section {
+  margin-top: $spacing-2xl;
+}
+
+.card {
+  background: $color-surface;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.header {
+  padding: $spacing-lg $spacing-xl;
+  border-bottom: 1px solid $color-border;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.1) 0%,
+    rgba($color-primary, 0.05) 100%
+  );
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-xs;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.description {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  margin: 0;
+}
+
+.content {
+  padding: $spacing-lg;
+}
+
+// Challenge navigation
+.challengeNav {
+  display: flex;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+  flex-wrap: wrap;
+}
+
+.navButton {
+  padding: $spacing-sm $spacing-md;
+  background: rgba($color-background, 0.5);
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-text-primary;
+  }
+
+  &--active {
+    background: rgba($color-primary, 0.2);
+    border-color: $color-primary;
+    color: $color-primary-light;
+  }
+
+  &--completed {
+    background: rgba($color-success, 0.1);
+    border-color: $color-success;
+
+    &::after {
+      content: ' ✓';
+      color: $color-success;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+// Individual challenge card
+.challengeCard {
+  background: rgba($color-background, 0.3);
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  overflow: hidden;
+}
+
+.challengeHeader {
+  padding: $spacing-md $spacing-lg;
+  border-bottom: 1px solid $color-border;
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.challengeTitle {
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+.difficultyBadge {
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &--easy {
+    background: rgba($color-success, 0.2);
+    color: $color-success-light;
+  }
+
+  &--medium {
+    background: rgba($color-warning, 0.2);
+    color: $color-warning-light;
+  }
+
+  &--hard {
+    background: rgba($color-danger, 0.2);
+    color: $color-danger-light;
+  }
+}
+
+.challengeBody {
+  padding: $spacing-lg;
+}
+
+// Code display
+.codeBlock {
+  background: $color-background;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  margin-bottom: $spacing-lg;
+  overflow-x: auto;
+
+  pre {
+    margin: 0;
+    font-family: $font-family-mono;
+    font-size: $font-size-sm;
+    line-height: 1.5;
+    color: $color-text-primary;
+  }
+}
+
+// Prediction input
+.predictionSection {
+  margin-bottom: $spacing-lg;
+}
+
+.inputLabel {
+  display: block;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-sm;
+}
+
+.predictionInput {
+  width: 100%;
+  padding: $spacing-md;
+  background: rgba($color-background, 0.5);
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  color: $color-text-primary;
+  font-family: $font-family-mono;
+  font-size: $font-size-sm;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color $transition-fast;
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Action buttons
+.actions {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+  margin-bottom: $spacing-lg;
+}
+
+.actionButton {
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition-fast;
+  @include touch-target;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--primary {
+    background: linear-gradient(135deg, $color-primary 0%, #8b5cf6 100%);
+    border: none;
+    color: white;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    border: 1px solid $color-border-hover;
+    color: $color-text-secondary;
+
+    &:hover:not(:disabled) {
+      background: rgba(148, 163, 184, 0.1);
+      color: $color-text-primary;
+    }
+  }
+
+  &--hint {
+    background: transparent;
+    border: 1px solid rgba($color-warning, 0.5);
+    color: $color-warning-light;
+
+    &:hover:not(:disabled) {
+      background: rgba($color-warning, 0.1);
+    }
+  }
+}
+
+// Feedback section
+.feedback {
+  padding: $spacing-md $spacing-lg;
+  border-radius: $radius-md;
+  margin-bottom: $spacing-lg;
+  font-size: $font-size-sm;
+  font-weight: 500;
+
+  &--correct {
+    background: rgba($color-success, 0.15);
+    border: 1px solid rgba($color-success, 0.3);
+    color: $color-success-light;
+  }
+
+  &--incorrect {
+    background: rgba($color-danger, 0.15);
+    border: 1px solid rgba($color-danger, 0.3);
+    color: $color-danger-light;
+  }
+}
+
+// Answer reveal
+.answerSection {
+  background: rgba($color-background, 0.5);
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  border: 1px solid $color-border;
+}
+
+.answerTitle {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-sm;
+}
+
+.correctOutput {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+  margin-bottom: $spacing-md;
+}
+
+.outputItem {
+  padding: $spacing-xs $spacing-md;
+  background: rgba($color-success, 0.2);
+  border: 1px solid rgba($color-success, 0.3);
+  border-radius: $radius-sm;
+  font-family: $font-family-mono;
+  font-size: $font-size-sm;
+  color: $color-success-light;
+}
+
+.explanation {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: 1.6;
+  margin: 0;
+}
+
+// Hints
+.hintSection {
+  margin-top: $spacing-md;
+  padding: $spacing-md;
+  background: rgba($color-warning, 0.1);
+  border-radius: $radius-md;
+  border: 1px solid rgba($color-warning, 0.2);
+}
+
+.hintTitle {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-warning-light;
+  margin: 0 0 $spacing-xs;
+}
+
+.hintText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin: 0;
+}
+
+// Progress indicator
+.progress {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md $spacing-lg;
+  background: rgba($color-background, 0.3);
+  border-radius: $radius-md;
+  margin-top: $spacing-lg;
+}
+
+.progressLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.progressBar {
+  flex: 1;
+  height: 6px;
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(135deg, $color-success 0%, #4ade80 100%);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.progressText {
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $color-text-primary;
+}
+
+.resetAllButton {
+  margin-left: auto;
+  padding: $spacing-xs $spacing-md;
+  background: transparent;
+  border: 1px solid rgba($color-danger, 0.5);
+  border-radius: $radius-sm;
+  color: $color-danger-light;
+  font-size: $font-size-xs;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba($color-danger, 0.1);
+    border-color: $color-danger;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-danger;
+    outline-offset: 2px;
+  }
+}
+

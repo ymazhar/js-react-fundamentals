@@ -18,6 +18,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import './index.scss';
 
 // Global styles for the application
 const globalStyles = `

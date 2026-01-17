@@ -3,6 +3,7 @@
  * Central export file for all components
  */
 
+export { default as ChallengeSection } from './ChallengeSection';
 export { default as CodeEditor } from './CodeEditor';
 export { default as Console } from './Console';
 export { default as Controls } from './Controls';
@@ -13,6 +14,7 @@ export { default as ReferencesSection } from './ReferencesSection';
 export { default as StepDescription } from './StepDescription';
 
 // Re-export types
+export * from './ChallengeSection/ChallengeSection.types';
 export * from './CodeEditor/CodeEditor.types';
 export * from './Console/Console.types';
 export * from './Controls/Controls.types';

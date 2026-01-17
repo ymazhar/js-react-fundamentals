@@ -21,26 +21,27 @@ $color-info-light: #93c5fd;
 $color-background: #0f172a;
 $color-background-light: #1e293b;
 $color-surface: rgba(30, 41, 59, 0.6);
-$color-border: rgba(148, 163, 184, 0.1);
+$color-border: rgba(148, 163, 184, 0.15);      // Improved visibility (was 0.1)
 $color-border-hover: rgba(148, 163, 184, 0.3);
 
 // Colors - Text
 $color-text-primary: #e2e8f0;
 $color-text-secondary: #94a3b8;
-$color-text-muted: #64748b;
-$color-text-disabled: #475569;
+$color-text-muted: #718096;      // Improved contrast (was #64748b)
+$color-text-disabled: #5a6578;   // Improved contrast (was #475569)
 
 // Typography
 $font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 $font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-$font-size-xs: 0.7rem;
-$font-size-sm: 0.75rem;
-$font-size-base: 0.875rem;
-$font-size-md: 0.9rem;
-$font-size-lg: 1rem;
-$font-size-xl: 1.25rem;
-$font-size-2xl: 1.75rem;
+// Improved typography scale with more distinct sizes
+$font-size-xs: 0.75rem;     // 12px (was 0.7rem/11.2px - too small)
+$font-size-sm: 0.8125rem;   // 13px (was 0.75rem)
+$font-size-base: 0.9375rem; // 15px (was 0.875rem)
+$font-size-md: 1rem;        // 16px (was 0.9rem - too similar to base)
+$font-size-lg: 1.125rem;    // 18px (was 1rem)
+$font-size-xl: 1.375rem;    // 22px (was 1.25rem)
+$font-size-2xl: 1.75rem;    // 28px (unchanged)
 
 // Spacing
 $spacing-xs: 0.25rem;
@@ -89,6 +90,22 @@ $breakpoint-lg: 1200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+// Focus visible for keyboard accessibility
+@mixin focus-visible {
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+// Touch-friendly minimum size
+@mixin touch-target {
+  @media (max-width: $breakpoint-sm) {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
 
 // ============================================

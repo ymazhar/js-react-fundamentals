@@ -1,34 +1,26 @@
 /**
  * CodeEditor Component
- * Displays the code example with syntax highlighting
+ * Displays the code example with syntax highlighting using react-syntax-highlighter
  */
 
 import React from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { CodeEditorProps } from './CodeEditor.types';
-import { KEYWORDS_PATTERN, SYNTAX_PATTERNS } from './CodeEditor.constants';
 import styles from './CodeEditor.module.scss';
 
 /**
- * Simple syntax highlighter for JavaScript code
- * Highlights keywords, strings, functions, comments, and numbers
+ * Custom style overrides for the syntax highlighter
+ * Compact styling to fit more content in viewport
  */
-const highlightCode = (code: string): string => {
-  // Order matters - process comments first to avoid conflicts
-  const highlighted = code
-    // Comments
-    .replace(SYNTAX_PATTERNS.comments, '<span class="comment">$1</span>')
-    // Strings (single and double quotes)
-    .replace(SYNTAX_PATTERNS.strings, '<span class="string">$1$2$1</span>')
-    // Keywords
-    .replace(KEYWORDS_PATTERN, '<span class="keyword">$1</span>')
-    // Function calls
-    .replace(SYNTAX_PATTERNS.functionCalls, '<span class="function">$1</span>(')
-    // Numbers
-    .replace(SYNTAX_PATTERNS.numbers, '<span class="number">$1</span>')
-    // Arrow functions
-    .replace(/=&gt;/g, '=>');
-
-  return highlighted;
+const customStyle: React.CSSProperties = {
+  margin: 0,
+  padding: '0.75rem',
+  fontSize: '0.8rem',
+  lineHeight: 1.5,
+  background: 'transparent',
+  fontFamily: "'JetBrains Mono', monospace",
+  overflow: 'auto',
 };
 
 /**
@@ -46,7 +38,16 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ code }) => {
       </div>
 
       {/* Code content with syntax highlighting */}
-      <pre className={styles.codeArea} dangerouslySetInnerHTML={{ __html: highlightCode(code) }} />
+      <SyntaxHighlighter
+        language="javascript"
+        style={vscDarkPlus}
+        customStyle={customStyle}
+        showLineNumbers={false}
+        wrapLines={true}
+        wrapLongLines={true}
+      >
+        {code}
+      </SyntaxHighlighter>
     </div>
   );
 };
