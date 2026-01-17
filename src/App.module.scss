@@ -101,11 +101,17 @@
 
 .queuesContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: $spacing-lg;
 
-  @media (max-width: $breakpoint-md) {
-    grid-template-columns: 1fr;
+  // Two columns on medium screens
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  // Three columns on large screens
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

@@ -86,8 +86,9 @@ const Controls: React.FC<ControlsProps> = ({
 
           {/* Speed control */}
           <div className={styles.speedControl}>
-            <span>Speed: {speedLabel}</span>
+            <label htmlFor="speed-slider">Speed: {speedLabel}</label>
             <input
+              id="speed-slider"
               type="range"
               className={styles.speedSlider}
               min={SPEED_CONFIG.min}
@@ -95,8 +96,24 @@ const Controls: React.FC<ControlsProps> = ({
               step={SPEED_CONFIG.step}
               value={SPEED_CONFIG.invertValue - speed}
               onChange={handleSpeedChange}
+              aria-label={`Animation speed: ${speedLabel}`}
             />
           </div>
+        </div>
+
+        {/* Progress bar */}
+        <div
+          className={styles.progressBar}
+          role="progressbar"
+          aria-valuenow={Math.max(0, currentStep + 1)}
+          aria-valuemin={0}
+          aria-valuemax={totalSteps}
+          aria-label={`Progress: step ${Math.max(0, currentStep + 1)} of ${totalSteps}`}
+        >
+          <div
+            className={styles.progressFill}
+            style={{ width: `${totalSteps > 0 ? ((currentStep + 1) / totalSteps) * 100 : 0}%` }}
+          />
         </div>
       </div>
     </div>

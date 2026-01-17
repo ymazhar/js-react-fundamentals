@@ -18,6 +18,7 @@ import { useEventLoop } from './hooks/useEventLoop';
 
 // Import components from new folder structure
 import {
+  ChallengeSection,
   CodeEditor,
   Console,
   Controls,
@@ -30,6 +31,9 @@ import {
 
 // Import styles
 import styles from './App.module.scss';
+
+/** ID for the main content area (used by skip link) */
+const MAIN_CONTENT_ID = 'main-content';
 
 /**
  * Main App component
@@ -70,6 +74,24 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.app}>
+      {/* Skip link for keyboard users */}
+      <a href={`#${MAIN_CONTENT_ID}`} className="skip-link">
+        Skip to main content
+      </a>
+
+      {/* ARIA live region for step announcements */}
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+        style={{ position: 'absolute', left: '-9999px' }}
+      >
+        {currentStepData
+          ? `Step ${currentStep + 1} of ${totalSteps}: ${currentStepData.description}`
+          : 'Ready to start visualization'}
+      </div>
+
       {/* Header with title and description */}
       <header className={styles.header}>
         <h1 className={styles.title}>🔄 JavaScript Event Loop Visualizer</h1>
@@ -78,7 +100,7 @@ const App: React.FC = () => {
         </p>
       </header>
 
-      <main className={styles.main}>
+      <main id={MAIN_CONTENT_ID} className={styles.main}>
         {/* Left Sidebar - Example selection and diagram */}
         <aside className={styles.sidebar}>
           {/* Example selector */}
@@ -86,6 +108,22 @@ const App: React.FC = () => {
             examples={codeExamples}
             selectedExample={selectedExample}
             onSelectExample={handleSelectExample}
+          />
+
+          {/* Animation controls */}
+          <Controls
+            isPlaying={isPlaying}
+            isAtStart={isAtStart}
+            isComplete={isComplete}
+            speed={speed}
+            currentStep={currentStep}
+            totalSteps={totalSteps}
+            onPlay={play}
+            onPause={pause}
+            onNextStep={nextStep}
+            onPreviousStep={previousStep}
+            onReset={reset}
+            onSpeedChange={setSpeed}
           />
 
           {/* Console output */}
@@ -111,22 +149,6 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          {/* Animation controls */}
-          <Controls
-            isPlaying={isPlaying}
-            isAtStart={isAtStart}
-            isComplete={isComplete}
-            speed={speed}
-            currentStep={currentStep}
-            totalSteps={totalSteps}
-            onPlay={play}
-            onPause={pause}
-            onNextStep={nextStep}
-            onPreviousStep={previousStep}
-            onReset={reset}
-            onSpeedChange={setSpeed}
-          />
-
           {/* Current step description */}
           <StepDescription step={currentStepData} stepNumber={currentStep} />
 
@@ -136,6 +158,9 @@ const App: React.FC = () => {
             <Queue type="microtaskQueue" items={microtaskQueue} />
             <Queue type="taskQueue" items={taskQueue} />
           </div>
+
+          {/* Challenge mode - predict the output */}
+          <ChallengeSection />
 
           {/* References and learning resources */}
           <ReferencesSection />
