@@ -2,10 +2,13 @@
 
 An interactive React application that visually explains how the JavaScript event loop works. Watch in real-time how function calls move between the call stack, task queue, and microtask queue.
 
+[![CI](https://github.com/ymazhar/js-react-fundamentals/actions/workflows/ci.yml/badge.svg)](https://github.com/ymazhar/js-react-fundamentals/actions/workflows/ci.yml)
+[![GitHub Pages](https://img.shields.io/badge/demo-live-brightgreen)](https://ymazhar.github.io/js-react-fundamentals/)
+
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)
-![Styled Components](https://img.shields.io/badge/Styled_Components-DB7093?style=flat&logo=styled-components&logoColor=white)
+![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=flat&logo=sass&logoColor=white)
 
 ## 🎯 Features
 
