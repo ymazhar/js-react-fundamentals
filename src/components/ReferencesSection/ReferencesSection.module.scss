@@ -1,0 +1,188 @@
+/**
+ * ReferencesSection Component Styles
+ * Scoped SCSS module for the ReferencesSection component
+ */
+
+@use '../../styles/variables' as *;
+
+.section {
+  margin-top: $spacing-2xl;
+}
+
+.card {
+  background: $color-surface;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.header {
+  padding: $spacing-xl $spacing-2xl;
+  border-bottom: 1px solid $color-border;
+  background: linear-gradient(
+    135deg,
+    rgba($color-primary, 0.1) 0%,
+    rgba(139, 92, 246, 0.05) 100%
+  );
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-sm;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.description {
+  color: $color-text-secondary;
+  font-size: $font-size-base;
+  margin: 0;
+}
+
+.content {
+  padding: $spacing-xl $spacing-2xl;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+}
+
+// Category Section
+.category {
+  &Title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-lg;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &Icon {
+    font-size: 1.25rem;
+  }
+}
+
+// Resource List
+.resourceList {
+  display: grid;
+  gap: $spacing-md;
+
+  // Responsive grid
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Individual Resource Card
+.resource {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-lg;
+  background: rgba($color-background, 0.5);
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  transition: all $transition-fast;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $color-primary;
+    background: rgba($color-primary, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba($color-primary, 0.15);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.resourceHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-sm;
+}
+
+.resourceTitle {
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.externalIcon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: $color-text-muted;
+  transition: color $transition-fast;
+
+  .resource:hover &,
+  .resource:focus-visible & {
+    color: $color-primary;
+  }
+}
+
+.resourceDescription {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-md;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.resourceMeta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.resourceAuthor,
+.resourceDuration {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.metaIcon {
+  width: 12px;
+  height: 12px;
+}
+
+// Accessibility: visually hidden but available to screen readers
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+

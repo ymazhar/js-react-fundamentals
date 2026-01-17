@@ -1,0 +1,46 @@
+/**
+ * Console Component Styles
+ * Scoped SCSS module for the Console component
+ */
+
+@use '../../styles/variables' as *;
+
+.container {
+  background: $color-background;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.header {
+  padding: $spacing-md $spacing-lg;
+  background: rgba($color-background, 0.8);
+  border-bottom: 1px solid $color-border;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: 500;
+}
+
+.output {
+  padding: $spacing-lg;
+  min-height: 100px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-family: $font-family-mono;
+  font-size: 0.8rem;
+}
+
+.line {
+  color: $color-success-light;
+  padding: $spacing-xs 0;
+
+  &::before {
+    content: '> ';
+    color: $color-text-muted;
+  }
+}
+
+.empty {
+  color: $color-text-disabled;
+  font-style: italic;
+}
+

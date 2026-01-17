@@ -1,0 +1,123 @@
+/**
+ * App Component Styles
+ * Global layout styles for the application
+ */
+
+@use './styles/variables' as *;
+
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $color-background 0%, $color-background-light 100%);
+  color: $color-text-primary;
+  font-family: $font-family-base;
+}
+
+.header {
+  padding: $spacing-2xl 2rem;
+  background: rgba($color-background, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $color-border;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg;
+  }
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: 700;
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-xl;
+  }
+}
+
+.subtitle {
+  color: $color-text-secondary;
+  font-size: $font-size-base;
+  margin: $spacing-xs 0 0;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: $spacing-2xl;
+  padding: $spacing-2xl;
+  max-width: 1600px;
+  margin: 0 auto;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.visualizationArea {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+}
+
+.codeCard {
+  background: $color-surface;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.codeCardHeader {
+  padding: $spacing-lg $spacing-xl;
+  border-bottom: 1px solid $color-border;
+}
+
+.codeCardTitle {
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+.codeCardContent {
+  padding: $spacing-xl;
+}
+
+.queuesContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-lg;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.consoleCard {
+  background: $color-surface;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.consoleCardContent {
+  padding: $spacing-xl;
+}
+

@@ -1,0 +1,67 @@
+/**
+ * StepDescription Component Styles
+ * Scoped SCSS module for the StepDescription component
+ */
+
+@use '../../styles/variables' as *;
+
+.card {
+  background: $color-surface;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.header {
+  padding: $spacing-lg $spacing-xl;
+  border-bottom: 1px solid $color-border;
+}
+
+.title {
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.content {
+  padding: $spacing-xl;
+}
+
+.descriptionBox {
+  padding: $spacing-lg $spacing-xl;
+  background: rgba($color-background, 0.5);
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  font-size: $font-size-md;
+  line-height: 1.5;
+  color: $color-text-primary;
+
+  &--highlighted {
+    background: linear-gradient(
+      135deg,
+      rgba($color-primary, 0.15) 0%,
+      rgba(139, 92, 246, 0.15) 100%
+    );
+    border-color: $color-primary;
+  }
+}
+
+.stepIndicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-full;
+  background: $color-primary;
+  color: white;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  margin-right: $spacing-md;
+}
+

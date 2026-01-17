@@ -1,0 +1,72 @@
+/**
+ * CodeEditor Component Styles
+ * Scoped SCSS module for the CodeEditor component
+ */
+
+@use '../../styles/variables' as *;
+
+.wrapper {
+  background: $color-background;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  gap: 6px;
+  padding: $spacing-md $spacing-lg;
+  background: rgba($color-background, 0.8);
+  border-bottom: 1px solid $color-border;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: $radius-full;
+
+  &--close {
+    background: #ff5f57;
+  }
+
+  &--minimize {
+    background: #febc2e;
+  }
+
+  &--maximize {
+    background: #28c840;
+  }
+}
+
+.codeArea {
+  margin: 0;
+  padding: $spacing-lg;
+  font-family: $font-family-mono;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  color: $color-text-primary;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+
+  // Syntax highlighting classes
+  :global(.keyword) {
+    color: #c792ea;
+  }
+
+  :global(.string) {
+    color: #c3e88d;
+  }
+
+  :global(.function) {
+    color: #82aaff;
+  }
+
+  :global(.comment) {
+    color: #546e7a;
+  }
+
+  :global(.number) {
+    color: #f78c6c;
+  }
+}
+
